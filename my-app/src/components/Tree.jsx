@@ -1,8 +1,11 @@
 import "./css/Tree.css";
 
-function Tree() {
+function Tree(props) {
     return (
-        <h1>I'm a tree</h1>
+        <section className="tree">
+            <h3>{props.name}</h3>
+            <p>{props.description}</p>
+        </section>
     );
 }
 
