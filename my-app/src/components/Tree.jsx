@@ -5,7 +5,7 @@ function Tree(props) {
         <section className="tree">
             <h3>{props.name}</h3>
             <p>{props.description}</p>
-            <img src={props.image} />
+            <img src={process.env.PUBLIC_URL + "/" + props.image} />
         </section>
     );
 }
