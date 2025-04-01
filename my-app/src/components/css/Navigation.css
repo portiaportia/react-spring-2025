@@ -11,3 +11,18 @@
 #main-nav li a {
     text-decoration: none;
 }
+
+#main-nav .hide-small {
+    display:none;
+    color:red;
+}
+
+@media screen and (min-width: 768px) {
+    #main-nav button {
+        display:none;
+    }
+
+    #main-nav .hide-small {
+        display:flex;
+    }
+  }
