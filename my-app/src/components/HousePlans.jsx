@@ -11,6 +11,7 @@ const HousePlans = () => {
         //automatically execute the async function
         (async () => {
             const response = await axios.get("https://portiaportia.github.io/json/house-plans.json");
+            setHouses(response.data);
         })();
 
     },[]);
