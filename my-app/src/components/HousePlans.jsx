@@ -10,7 +10,7 @@ const HousePlans = () => {
     useEffect(()=>{
         //automatically execute the async function
         (async () => {
-            const response = await axios.get("https://portiaportia.github.io/json/house-plans.json");
+            const response = await axios.get("http://localhost:3001/api/houses");
             setHouses(response.data);
         })();
 
