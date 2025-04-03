@@ -1,5 +1,5 @@
 import HousePlan from "./HousePlan";
-
+//https://portiaportia.github.io/json/house-plans.json
 const HousePlans = () => {
     return (
         <div id="house-plans" className="columns">
