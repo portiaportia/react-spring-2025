@@ -7,27 +7,27 @@ const AddHousePlan = (props) => {
         <div id="add-dialog" className="w3-modal">
             <div className="w3-modal-content">
                 <div className="w3-container">
-                    <span id="dialog-close" className="w3-button w3-display-topright">&times;</span>
+                    <span id="dialog-close" className="w3-button w3-display-topright" onClick={props.closeAddDialog}>&times;</span>
                     <form id="add-property-form">
                         <h3>Create New Property</h3>
 
                         <p>
-                            <label for="name">Property Name:</label>
+                            <label htmlFor="name">Property Name:</label>
                             <input type="text" id="name" name="name"></input>
                         </p>
 
                         <p>
-                            <label for="size">Size:</label>
+                            <label htmlFor="size">Size:</label>
                             <input type="number" id="size" name="size"></input>
                         </p>
 
                         <p>
-                            <label for="bedrooms">Bedrooms:</label>
+                            <label htmlFor="bedrooms">Bedrooms:</label>
                             <input type="number" id="bedrooms" name="bedrooms" min="0"></input>
                         </p>
 
                         <p>
-                            <label for="bathrooms">Bathrooms:</label>
+                            <label htmlFor="bathrooms">Bathrooms:</label>
                             <input type="number" id="bathrooms" name="bathrooms" min="0"></input>
                         </p>
 
@@ -38,7 +38,7 @@ const AddHousePlan = (props) => {
                                 </p>
                             </p>
                             <p id="img-upload">
-                                <label for="img">Upload Image:</label>
+                                <label htmlFor="img">Upload Image:</label>
                                 <input type="file" id="img" accept="image/*"/>
                             </p>
                         </section>

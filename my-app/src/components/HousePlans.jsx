@@ -7,6 +7,7 @@ import AddHousePlan from "./AddHousePlan";
 //https://portiaportia.github.io/json/house-plans.json
 const HousePlans = () => {
     const [houses, setHouses] = useState([]);
+    const [showAddDialog, setShowAddDialog] = useState(false);
 
     //after page loaded to asynch json retrieval
     useEffect(()=>{
@@ -18,9 +19,21 @@ const HousePlans = () => {
 
     },[]);
 
+    const openAddDialog = () => {
+        setShowAddDialog(true);
+    }
+
+    const closeAddDialog = () => {
+        console.log("I'm in the close method")
+        setShowAddDialog(false);
+    }
+
     return (
         <>
-            <AddHousePlan />
+            <button id="add-house" onClick={openAddDialog}>+</button>
+
+            {showAddDialog?(<AddHousePlan closeAddDialog={closeAddDialog} />) : ("")}
+            
             <div id="house-plans" className="columns">
                 {houses.map((house)=>(
                     <HousePlan
