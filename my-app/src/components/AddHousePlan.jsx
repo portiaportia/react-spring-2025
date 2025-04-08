@@ -4,12 +4,18 @@ import React, {useState} from "react";
 
 const AddHousePlan = (props) => {
     const [result, setResult] = useState("");
+    const [prevSrc, setPrevSrc] = useState("");
+
+    const uploadImage = (event) => {
+        setPrevSrc(URL.createObjectURL(event.target.files[0]));
+    }
 
     const addToServer = async(event) => {
         event.preventDefault(); //stops us from going to another page or refreshing
         setResult("Sending...");
 
         const formData = new FormData(event.target);
+        console.log(...formData);
         
         const response = await fetch("http://localhost:3001/api/houses", {
             "method":"POST",
@@ -56,12 +62,13 @@ const AddHousePlan = (props) => {
                         <section className="columns">
                             <p>
                                 <p id="img-prev-section">
-                                    <img id="img-prev"></img>
+                                    {prevSrc!=""?( <img id="img-prev" src={prevSrc}></img>):("")}
+                                    
                                 </p>
                             </p>
                             <p id="img-upload">
                                 <label htmlFor="img">Upload Image:</label>
-                                <input type="file" id="img" accept="image/*"/>
+                                <input type="file" id="img" name="img" accept="image/*" onChange={uploadImage}/>
                             </p>
                         </section>
 

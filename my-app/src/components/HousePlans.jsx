@@ -37,7 +37,8 @@ const HousePlans = () => {
             <div id="house-plans" className="columns">
                 {houses.map((house)=>(
                     <HousePlan
-                    _id="1"
+                    key={house.name}
+                    _id={houses._id}
                     name={house.name}
                     size={house.size}
                     bedrooms={house.bedrooms}
