@@ -3,12 +3,26 @@ import "./css/Dialog.css";
 import React, {useState} from "react";
 
 const AddHousePlan = (props) => {
+    const [result, setResult] = useState("");
+
+    const addToServer = (event) => {
+        event.preventDefault(); //stops us from going to another page or refreshing
+        setResult("Sending...");
+
+        const formData = new FormData(event.target);
+        
+        const response = await fetch("", {
+            "method":"POST",
+            "body":formData
+        });
+    };
+
     return (
         <div id="add-dialog" className="w3-modal">
             <div className="w3-modal-content">
                 <div className="w3-container">
                     <span id="dialog-close" className="w3-button w3-display-topright" onClick={props.closeAddDialog}>&times;</span>
-                    <form id="add-property-form">
+                    <form id="add-property-form" onSubmit={addToServer}>
                         <h3>Create New Property</h3>
 
                         <p>
@@ -46,6 +60,7 @@ const AddHousePlan = (props) => {
                         <p>
                             <button type="submit">Submit</button>
                         </p>
+                        <p>{result}</p>
                     </form>
                 </div>
             </div>
