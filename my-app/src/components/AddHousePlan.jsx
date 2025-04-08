@@ -5,16 +5,24 @@ import React, {useState} from "react";
 const AddHousePlan = (props) => {
     const [result, setResult] = useState("");
 
-    const addToServer = (event) => {
+    const addToServer = async(event) => {
         event.preventDefault(); //stops us from going to another page or refreshing
         setResult("Sending...");
 
         const formData = new FormData(event.target);
         
-        const response = await fetch("", {
+        const response = await fetch("http://localhost:3001/api/houses", {
             "method":"POST",
             "body":formData
         });
+
+        if(response.status == 200){
+            setResult("House plan added successfully");
+            event.target.reset();
+            props.closeAddDialog();
+        } else {
+            setResult("Error adding house");
+        }
     };
 
     return (
@@ -27,22 +35,22 @@ const AddHousePlan = (props) => {
 
                         <p>
                             <label htmlFor="name">Property Name:</label>
-                            <input type="text" id="name" name="name"></input>
+                            <input type="text" id="name" name="name" required min="3"></input>
                         </p>
 
                         <p>
                             <label htmlFor="size">Size:</label>
-                            <input type="number" id="size" name="size"></input>
+                            <input type="number" id="size" name="size" min="0" required></input>
                         </p>
 
                         <p>
                             <label htmlFor="bedrooms">Bedrooms:</label>
-                            <input type="number" id="bedrooms" name="bedrooms" min="0"></input>
+                            <input type="number" id="bedrooms" name="bedrooms" min="0" required></input>
                         </p>
 
                         <p>
                             <label htmlFor="bathrooms">Bathrooms:</label>
-                            <input type="number" id="bathrooms" name="bathrooms" min="0"></input>
+                            <input type="number" id="bathrooms" name="bathrooms" min="0" required></input>
                         </p>
 
                         <section className="columns">
