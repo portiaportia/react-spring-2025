@@ -4,11 +4,6 @@ import React, {useState} from "react";
 
 const AddHousePlan = (props) => {
     const [result, setResult] = useState("");
-    const [prevSrc, setPrevSrc] = useState("");
-
-    const uploadImage = (event) => {
-        setPrevSrc(URL.createObjectURL(event.target.files[0]));
-    }
 
     const addToServer = async(event) => {
         event.preventDefault(); //stops us from going to another page or refreshing
@@ -24,7 +19,6 @@ const AddHousePlan = (props) => {
 
         if(response.status == 200){
             setResult("House plan added successfully");
-            props.updateHousePlans(await response.json());
             event.target.reset();
             props.closeAddDialog();
         } else {
@@ -63,8 +57,7 @@ const AddHousePlan = (props) => {
                         <section className="columns">
                             <div>
                                 <p id="img-prev-section">
-                                    {prevSrc!=""?( <img id="img-prev" src={prevSrc}></img>):("")}
-                                    
+                                    <img id="img-prev" src=""></img>
                                 </p>
                             </div>
                             <p id="img-upload">
