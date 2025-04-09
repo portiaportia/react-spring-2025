@@ -24,6 +24,7 @@ const AddHousePlan = (props) => {
 
         if(response.status == 200){
             setResult("House plan added successfully");
+            props.updateHousePlans(await response.json());
             event.target.reset();
             props.closeAddDialog();
         } else {
@@ -60,12 +61,12 @@ const AddHousePlan = (props) => {
                         </p>
 
                         <section className="columns">
-                            <p>
+                            <div>
                                 <p id="img-prev-section">
                                     {prevSrc!=""?( <img id="img-prev" src={prevSrc}></img>):("")}
                                     
                                 </p>
-                            </p>
+                            </div>
                             <p id="img-upload">
                                 <label htmlFor="img">Upload Image:</label>
                                 <input type="file" id="img" name="img" accept="image/*" onChange={uploadImage}/>

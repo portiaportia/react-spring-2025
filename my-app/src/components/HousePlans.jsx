@@ -28,11 +28,15 @@ const HousePlans = () => {
         setShowAddDialog(false);
     }
 
+    const updateHousePlans = (housePlan) => {
+        setHouses((houses)=>[...houses, housePlan]);
+    };
+
     return (
         <>
             <button id="add-house" onClick={openAddDialog}>+</button>
 
-            {showAddDialog?(<AddHousePlan closeAddDialog={closeAddDialog} />) : ("")}
+            {showAddDialog?(<AddHousePlan closeAddDialog={closeAddDialog} updateHousePlans={updateHousePlans} /> ): ("")}
             
             <div id="house-plans" className="columns">
                 {houses.map((house)=>(
