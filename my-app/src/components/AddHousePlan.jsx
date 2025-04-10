@@ -4,6 +4,11 @@ import React, {useState} from "react";
 
 const AddHousePlan = (props) => {
     const [result, setResult] = useState("");
+    const [prevSrc, setPrevSrc] = useState("");
+
+    const uploadImage = (event) => {
+        setPrevSrc(URL.createObjectURL(event.target.files[0]));
+    };
 
     const addToServer = async(event) => {
         event.preventDefault(); //stops us from going to another page or refreshing
@@ -57,12 +62,15 @@ const AddHousePlan = (props) => {
                         <section className="columns">
                             <div>
                                 <p id="img-prev-section">
-                                    <img id="img-prev" src=""></img>
+                                    {prevSrc!=""?
+                                    (<img id="img-prev" src={prevSrc}></img>):
+                                    ("")
+                                    }
                                 </p>
                             </div>
                             <p id="img-upload">
                                 <label htmlFor="img">Upload Image:</label>
-                                <input type="file" id="img" name="img" accept="image/*" onChange={uploadImage}/>
+                                <input type="file" id="img" name="img" accept="image/*" onChange={uploadImage} />
                             </p>
                         </section>
 
