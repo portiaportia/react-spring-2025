@@ -26,6 +26,7 @@ const AddHousePlan = (props) => {
             setResult("House plan added successfully");
             event.target.reset();
             props.closeAddDialog();
+            props.updateHousePlans(await response.json());
         } else {
             setResult("Error adding house");
         }
