@@ -20,7 +20,7 @@ const EditHousePlan = (props) => {
           <span
             id="dialog-close"
             className="w3-button w3-display-topright"
-            onClick={props.closeDialog}
+            onClick={props.closeEditDialog}
           >
             &times;
           </span>

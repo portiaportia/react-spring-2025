@@ -7,15 +7,38 @@ const HousePlan = (props) => {
   const [housePlan, setHousePlan] = useState(props);
   const [showEditDialog, setShowEditDialog] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [showHousePlan, setShowHousePlan] = useState(true);
+
+  const openEditDialog = () => {
+    setShowEditDialog(true);
+  };
+
+  const closeEditDialog = () => {
+    setShowEditDialog(false);
+  };
+
+  const openDeleteDialog = () => {
+    setShowDeleteDialog(true);
+  };
+
+  const closeDeleteDialog = () => {
+    setShowDeleteDialog(false);
+  };
+
+  const hideHousePlan = () => {
+    setShowHousePlan(false);
+  }
 
   return (
     <>
-      
+      {showHousePlan?(
         <div>
             {showDeleteDialog?(
               <DeleteHousePlan
               name={housePlan.name}
               _id={housePlan._id}
+              closeDeleteDialog = {closeDeleteDialog}
+              hideHousePlan = {hideHousePlan}
             />
             ):("")}
             
@@ -28,6 +51,7 @@ const HousePlan = (props) => {
                bedrooms={housePlan.bedrooms}
                bathrooms={housePlan.bathrooms}
                features={housePlan.features}
+               closeEditDialog = {closeEditDialog}
              />
             ):("")}
            
@@ -43,10 +67,10 @@ const HousePlan = (props) => {
               <header className="columns">
                 <h3>{housePlan.name}</h3>
                 <section id="change-buttons">
-                  <a href="#" >
+                  <a href="#" onClick={openEditDialog} >
                     &#9998;
                   </a>
-                  <a href="#" >
+                  <a href="#" onClick={openDeleteDialog}>
                     &#x2715;
                   </a>
                 </section>
@@ -58,6 +82,7 @@ const HousePlan = (props) => {
             </section>
           </section>
         </div>
+      ):("")}
     </>
   );
 };
