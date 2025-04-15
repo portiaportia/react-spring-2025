@@ -5,25 +5,32 @@ import DeleteHousePlan from "./DeleteHousePlan";
 
 const HousePlan = (props) => {
   const [housePlan, setHousePlan] = useState(props);
+  const [showEditDialog, setShowEditDialog] = useState(false);
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   return (
     <>
       
         <div>
-            <DeleteHousePlan
+            {showDeleteDialog?(
+              <DeleteHousePlan
               name={housePlan.name}
               _id={housePlan._id}
             />
-
-            <EditHousePlan
-              _id={housePlan._id}
-              name={housePlan.name}
-              size={housePlan.size}
-              main_image={housePlan.main_image}
-              bedrooms={housePlan.bedrooms}
-              bathrooms={housePlan.bathrooms}
-              features={housePlan.features}
-            />
+            ):("")}
+            
+            {showEditDialog?(
+               <EditHousePlan
+               _id={housePlan._id}
+               name={housePlan.name}
+               size={housePlan.size}
+               main_image={housePlan.main_image}
+               bedrooms={housePlan.bedrooms}
+               bathrooms={housePlan.bathrooms}
+               features={housePlan.features}
+             />
+            ):("")}
+           
 
           <section className="house-plan columns">
             <section className="feature-image">
