@@ -27,7 +27,11 @@ const HousePlan = (props) => {
 
   const hideHousePlan = () => {
     setShowHousePlan(false);
-  }
+  };
+
+  const editHousePlan = (house) => {
+    setHousePlan(house);
+  };
 
   return (
     <>
@@ -52,6 +56,7 @@ const HousePlan = (props) => {
                bathrooms={housePlan.bathrooms}
                features={housePlan.features}
                closeEditDialog = {closeEditDialog}
+               editHousePlan = {editHousePlan}
              />
             ):("")}
            

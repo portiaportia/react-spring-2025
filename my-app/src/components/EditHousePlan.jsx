@@ -10,7 +10,26 @@ const EditHousePlan = (props) => {
 };
 
   const onSubmit = async(event) => {
-    
+    event.preventDefault();
+    setResult("Sending...");
+
+    const formData = new FormData(event.target);
+    console.log(...formData);
+
+    const response = await fetch(`http://localhost:3001/api/houses/${props._id}`,{
+      method:"PUT",
+      body:formData
+    });
+
+    if(response.status === 200){
+      setResult("House Plan editted successfully");
+      event.target.reset();
+      props.closeEditDialog();
+      props.editHousePlan(await response.json());
+    }
+    else {
+      setResult("Error editting your house plan");
+    }
   };
 
   return (
@@ -24,7 +43,7 @@ const EditHousePlan = (props) => {
           >
             &times;
           </span>
-          <form id="edit-property-form" >
+          <form id="edit-property-form" onSubmit={onSubmit}>
             <p>
               <label htmlFor="name ">Property Name:</label>
               <input
